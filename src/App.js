@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext,Suspense } from "react";
+import "./App.css";
+import NoofQuestions from "./components/NoofQuestions";
+import LevelSelect from "./components/LevelSelect";
+import TypeOfQuestions from "./components/TypeOfQuestions";
+import CategoriesList from "./components/CategoriesList";
+import GameContext from "./context/store";
+import axios from "axios";
+// const CategoriesList = React.lazy(()=> import  ('./components/CategoriesList'));
 
 function App() {
+  const value = useContext(GameContext)
+  const { category , amount , difficulty, type} = value[0]
+  const fetchQuestions = () => {
+    URL = 'https://opentdb.com/api.php'
+    // let fetch_string = `${URL}/?amount=${value[0].amount}&category=${value[0].category}&difficulty=${value[0].difficulty}&type=${value[0].type}`
+    axios.get(URL,{params:{
+      category: category === null ? '' : value[0].category,
+      amount ,
+      difficulty,
+      type
+    }}).then(res => console.log(res.data)) 
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <Suspense fallback={<p>loading....</p>}>
+          <CategoriesList />
+          <NoofQuestions />
+          <TypeOfQuestions />
+          <LevelSelect />
+        </Suspense>
+        <button onClick={fetchQuestions}> Submit </button>
+      </div>
+    </>
   );
 }
 
