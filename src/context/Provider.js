@@ -12,6 +12,8 @@ const reducer = (state,{action}) => {
             return {...state, difficulty: action.payload}
         case 'TYPE_SELECT':
             return {...state,type:action.payload}
+        case 'RESET':
+            return initialState
         default:
             return state
     }

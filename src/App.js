@@ -7,36 +7,27 @@ import TypeOfQuestions from "./components/TypeOfQuestions";
 import CategoriesList from "./components/CategoriesList";
 import GameContext from "./context/store";
 import axios from "axios";
-
+import { Route , Switch } from 'react-router-dom'
+import Question404 from "./components/Questions404";
 // const CategoriesList = React.lazy(()=> import  ('./components/CategoriesList'));
 
 function App() {
   const value = useContext(GameContext);
-  const { category, amount, difficulty, type } = value[0];
-  const fetchQuestions = () => {
-    URL = "https://opentdb.com/api.php";
-    // let fetch_string = `${URL}/?amount=${value[0].amount}&category=${value[0].category}&difficulty=${value[0].difficulty}&type=${value[0].type}`
-    axios
-      .get(URL, {
-        params: {
-          category: category === null ? "" : value[0].category,
-          amount,
-          difficulty,
-          type
-        }
-      })
-      .then(res => console.log(res.data));
-  };
+ 
 
   return (
     <>
       <div className="App">
         <Suspense fallback={<p>loading....</p>}>
-          <NewGameModal />
+          <Switch>
+            <Route exact path="/" ><NewGameModal></NewGameModal> </Route>
+            <Route path="/error"> <Question404/> </Route>
+          </Switch>
+          
         </Suspense>
-        <button onClick={fetchQuestions}> Submit </button>
       </div>
-    </>
+    </>    
+
   );
 }
 
