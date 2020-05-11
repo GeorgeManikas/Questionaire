@@ -3,7 +3,7 @@ import axios from "axios";
 import GameContext from "../context/store";
 import { StyledSelect } from "../components/styled/StyledSelect";
 import { StyledLabel } from "./styled/StyledLabel";
-import { StyledContainer } from "./styled/StyledContainer";
+
 function CategoriesList() {
   const [categories, setCategories] = useState([]);
   // eslint-disable-next-line
@@ -29,7 +29,7 @@ function CategoriesList() {
   };
 
   return (
-    <StyledContainer>
+    <>
       <StyledLabel htmlFor="cats"> Pick Category </StyledLabel>
       <StyledSelect
         name="categories"
@@ -42,7 +42,7 @@ function CategoriesList() {
           </option>
         ))}
       </StyledSelect>
-    </StyledContainer>
+    </>
   );
 }
 

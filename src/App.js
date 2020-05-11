@@ -1,5 +1,6 @@
 import React, { useContext, Suspense } from "react";
 import "./App.css";
+import NewGameModal from "./components/NewGameModal";
 import NoofQuestions from "./components/NoofQuestions";
 import LevelSelect from "./components/LevelSelect";
 import TypeOfQuestions from "./components/TypeOfQuestions";
@@ -31,10 +32,7 @@ function App() {
     <>
       <div className="App">
         <Suspense fallback={<p>loading....</p>}>
-          <CategoriesList />
-          <NoofQuestions />
-          <TypeOfQuestions />
-          <LevelSelect />
+          <NewGameModal />
         </Suspense>
         <button onClick={fetchQuestions}> Submit </button>
       </div>

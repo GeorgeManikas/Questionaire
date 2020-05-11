@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import GameContext from "../context/store";
 import { StyledSelect } from "../components/styled/StyledSelect";
 import { StyledLabel } from "./styled/StyledLabel";
+
 function NoofQuestions() {
   const noOfQuestions = [10, 20, 40];
   //eslint-disable-next-line
