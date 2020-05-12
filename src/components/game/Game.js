@@ -13,6 +13,7 @@ const Game = ({}) => {
   return (
     <StyledContainer>
       <Title> In game</Title>
+      <hr />
       <Question />
       <Button onClick={() => setEndGame(true)}> Quit </Button>
       {endGame && <Redirect to="/" />}

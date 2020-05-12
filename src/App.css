@@ -41,7 +41,8 @@ body {
 }
 
 .answers {
-  display: grid;
-  grid-template-columns: repeat(2, 4fr);
-  grid-gap: 20px;
+  display: flex;
+  align-content: stretch;
+  justify-content: stretch;
+  flex-direction: column;
 }
