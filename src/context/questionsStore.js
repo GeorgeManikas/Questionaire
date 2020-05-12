@@ -1,4 +1,3 @@
-import {createContext} from 'react';
-import {questionsState} from './questionsState'
+import { createContext } from "react";
 
-export const QuestionsContext = createContext(questionsState)
+export const QuestionsContext = createContext();

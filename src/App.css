@@ -39,3 +39,9 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.answers {
+  display: grid;
+  grid-template-columns: repeat(2, 4fr);
+  grid-gap: 20px;
+}
