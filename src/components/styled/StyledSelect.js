@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledSelect = styled.select`
   font-family: "Indie Flower", cursive;
-  font-size: 1.5rem;
+  font-size: 1rem;
 
   border: none;
   border-bottom: 1px solid orange;
@@ -15,4 +15,5 @@ export const StyledSelect = styled.select`
   background-position-y: 50%;
   padding: 10px;
   margin: 10px;
+  
 `;

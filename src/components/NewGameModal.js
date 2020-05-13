@@ -20,7 +20,8 @@ const NewGameModal = () => {
           amount,
           category,
           difficulty,
-          type
+          type,
+          
         }
       })
       .then(res => {

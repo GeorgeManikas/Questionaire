@@ -12,7 +12,7 @@ const Game = ({}) => {
   const [endGame, setEndGame] = useState(false);
   return (
     <StyledContainer>
-      <Title> In game</Title>
+      <Title > In game</Title>
       <hr />
       <Question />
       <Button onClick={() => setEndGame(true)}> Quit </Button>

@@ -20,14 +20,14 @@ function TypeOfQuestions() {
   };
 
   return (
-    <div>
-      <StyledLabel htmlFor="typeOfQuestions">
-        {" "}
-        True/False of Multiple Choice{" "}
+    <>
+      <StyledLabel htmlFor="qs" >
+        
+        True/False of Multiple Choice
       </StyledLabel>
       <StyledSelect
         name=""
-        id="typeOfQuestions"
+        id="qs"
         onChange={e => handleLevelSelect(e)}
       >
         {typeOfQuestions.map((v, i) => (
@@ -36,7 +36,7 @@ function TypeOfQuestions() {
           </option>
         ))}
       </StyledSelect>
-    </div>
+    </>
   );
 }
 

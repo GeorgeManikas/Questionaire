@@ -11,14 +11,7 @@ const Question = props => {
   const [found, setFound] = useState(false);
   const [answers, setAnswers] = useState([]);
 
-  const checkAnswer = e => {
-    if (e === correct) {
-      // β+1 at context
-      setFound(true);
-    } else {
-      alert("wrong");
-    }
-  };
+  
   useEffect(() => {
     setAnswers([]);
     const r = Math.floor(Math.random() * 10);
@@ -37,14 +30,14 @@ const Question = props => {
   };
   return (
     <StyledContainer>
-      <Title subtitle> {decodeURIComponent(question)}</Title>
+      <Title subtitle> {(decodeURI(escape(question)))}</Title>
       <div className="answers">
         {answers.map((v, i) => (
           <Answer
             color={setFound}
             answer={v}
             key={i}
-            onCheckAnswer={e => checkAnswer(e)}
+            correct={correct}
           >
             {v}{" "}
           </Answer>
