@@ -2,44 +2,38 @@ import React, { useContext, useEffect, useState } from "react";
 import GameContext from "../../context/store";
 import { StyledContainer, Title } from "../styled/StyledContainer";
 import { shuffleArray } from "../../logic/ArrayManipulation";
-import { Button } from "../styled/StyledContainer";
+
 import Answer from "./Answer";
 const Question = props => {
+  //eslint-disable-next-line
   const [value, dispatch] = useContext(GameContext);
   const [question, setQuestion] = useState();
   const [correct, setCorrect] = useState("");
+  //eslint-disable-next-line
   const [found, setFound] = useState(false);
   const [answers, setAnswers] = useState([]);
 
-  
   useEffect(() => {
-    setAnswers([]);
-    const r = Math.floor(Math.random() * 10);
-    const p = shuffleArray(value.questions);
-    setQuestion(value.questions[r].question);
-    setCorrect(value.questions[r].correct_answer);
-    const ar = [
-      value.questions[r].correct_answer,
-      ...value.questions[r].incorrect_answers
-    ];
-    setAnswers(shuffleArray(ar));
-  }, []);
+    let ar;
+    console.log(value);
+    if (value.qlength > 0) {
+      ar = [
+        ...value.currentQuestion.incorrect_answers,
+        value.currentQuestion.correct_answer
+      ];
+      setQuestion(value.currentQuestion.question);
+      setAnswers(shuffleArray(ar));
+      setCorrect(value.currentQuestion.correct_answer);
+    }
+  }, [question, value.questions, value.qlength, value.currentQuestion]);
 
-  const btnStyle = {
-    background: found ? "green" : "red"
-  };
   return (
     <StyledContainer>
-      <Title subtitle> {(decodeURI(escape(question)))}</Title>
+      <Title subtitle>{decodeURIComponent(question)}</Title>
       <div className="answers">
         {answers.map((v, i) => (
-          <Answer
-            color={setFound}
-            answer={v}
-            key={i}
-            correct={correct}
-          >
-            {v}{" "}
+          <Answer color={setFound} answer={v} key={i} correct={correct}>
+            <p>{decodeURIComponent(v)}</p>{" "}
           </Answer>
         ))}
       </div>

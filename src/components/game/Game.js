@@ -1,21 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
-import { QuestionsContext } from "../../context/questionsStore";
+import React, { useContext, useState } from "react";
+
 import GameContext from "../../context/store";
-import { StyledContainer, Title, Button } from "../styled/StyledContainer";
+import { StyledContainer, Button } from "../styled/StyledContainer";
 import { Redirect } from "react-router";
 import Question from "./Question";
+import ScoreCard from "./ScoreCard";
 
-const Game = ({}) => {
-  const [questions, dispatchQuestions] = useContext(QuestionsContext);
+const Game = () => {
+  const resetGame = () => {
+    dispatch({ action: { type: "RESET" } });
+    setEndGame(true);
+  };
+  //eslint-disable-next-line
   const [value, dispatch] = useContext(GameContext);
-  console.log(value);
+
   const [endGame, setEndGame] = useState(false);
   return (
     <StyledContainer>
-      <Title > In game</Title>
+      <ScoreCard />
       <hr />
       <Question />
-      <Button onClick={() => setEndGame(true)}> Quit </Button>
+      <Button onClick={resetGame}> Quit </Button>
       {endGame && <Redirect to="/" />}
     </StyledContainer>
   );

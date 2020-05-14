@@ -3,8 +3,7 @@ import GameContext from "../context/store";
 import axios from "axios";
 import LevelSelect from "./LevelSelect";
 import { StyledContainer, Title } from "./styled/StyledContainer";
-import { QuestionsProvider } from "../context/QuestionsProvider";
-import Question404 from "./Questions404";
+
 import CategoriesList from "./CategoriesList";
 import NoofQuestions from "./NoofQuestions";
 import TypeOfQuestions from "./TypeOfQuestions";
@@ -21,7 +20,7 @@ const NewGameModal = () => {
           category,
           difficulty,
           type,
-          
+          encode: "url3986"
         }
       })
       .then(res => {
@@ -40,7 +39,7 @@ const NewGameModal = () => {
   const [notFound, setNotFound] = useState(false);
   const [questionsFound, setQuestionsFound] = useState(false);
   const [value, dispatch] = useContext(GameContext);
-  const { amount, category, difficulty, type } = value;
+  // const [clicked,setClicked]
 
   if (notFound) {
     return <Redirect to="/error" />;
@@ -54,6 +53,7 @@ const NewGameModal = () => {
       <LevelSelect />
       <Button onClick={() => fetchQuestions(value)}> Start Game... </Button>
       {questionsFound && <Redirect to="/game" />}
+      {/* {!questionsFound && <Redirect to="/error" />} */}
     </StyledContainer>
   );
 };
