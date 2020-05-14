@@ -80,7 +80,7 @@ export const BlinkedButton = styled.button`
   &:hover{
       background:olive;
       color:orange;
-      border:1px solid darkorange;}
+      }
 
   
   @keyframes changeColor {

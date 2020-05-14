@@ -6,6 +6,7 @@ import Question from "./Question";
 const Answer = props => {
   //eslint-disable-next-line
   const [value, dispatch] = useContext(GameContext);
+  const [color, setColor] = useState("darkorange");
 
   useEffect(() => {
     setTimeout(() => {}, 1000);
@@ -13,6 +14,7 @@ const Answer = props => {
   }, [value.questions]);
 
   const checkAnswer = e => {
+    setColor('green')
     for (let i = 0; i < 1000; i++) {}
     if (e === props.correct) {
       setColor(" green");
@@ -49,7 +51,6 @@ const Answer = props => {
     return <Question />;
   };
 
-  const [color, setColor] = useState("darkorange");
 
   return (
     <Title subtitle>

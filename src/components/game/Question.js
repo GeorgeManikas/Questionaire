@@ -25,7 +25,7 @@ const Question = props => {
       setAnswers(shuffleArray(ar));
       setCorrect(value.currentQuestion.correct_answer);
     }
-  }, [question, value.questions, value.qlength, value.currentQuestion]);
+  }, [question, value.questions, value.qlength, value.currentQuestion, value]);
 
   return (
     <StyledContainer>
