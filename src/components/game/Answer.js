@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import GameContext from "../../context/store";
 import { Title, BlinkedButton } from "../styled/StyledContainer";
 import Question from "./Question";
+import GameOver from '../game/GameOver'
 
 const Answer = props => {
   //eslint-disable-next-line
@@ -16,6 +17,7 @@ const Answer = props => {
   const checkAnswer = e => {
     setColor('green')
     for (let i = 0; i < 1000; i++) {}
+    
     if (e === props.correct) {
       setColor(" green");
       setTimeout(() => {

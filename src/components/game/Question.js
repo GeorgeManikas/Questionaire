@@ -4,6 +4,7 @@ import { StyledContainer, Title } from "../styled/StyledContainer";
 import { shuffleArray } from "../../logic/ArrayManipulation";
 
 import Answer from "./Answer";
+import GameOver from "./GameOver";
 const Question = props => {
   //eslint-disable-next-line
   const [value, dispatch] = useContext(GameContext);
@@ -16,7 +17,7 @@ const Question = props => {
   useEffect(() => {
     let ar;
     console.log(value);
-    if (value.qlength > 0) {
+    if (value.questions.length > 0  ) {
       ar = [
         ...value.currentQuestion.incorrect_answers,
         value.currentQuestion.correct_answer
@@ -24,11 +25,17 @@ const Question = props => {
       setQuestion(value.currentQuestion.question);
       setAnswers(shuffleArray(ar));
       setCorrect(value.currentQuestion.correct_answer);
-    }
+    } 
+      
   }, [question, value.questions, value.qlength, value.currentQuestion, value]);
+
+  if (value.questions.length === 0 ){
+    return <GameOver score={value.score} questions={value.questions} />
+  }
 
   return (
     <StyledContainer>
+      
       <Title subtitle>{decodeURIComponent(question)}</Title>
       <div className="answers">
         {answers.map((v, i) => (

@@ -5,9 +5,10 @@ const ScoreCard = () => {
   //eslint-disable-next-line
   const [value, dispatch] = useContext(GameContext);
   return (
-    <Title>
-      Score : {value.score}/{value.amount}
-    </Title>
+    <>
+    <Title> Score : {value.score}/{value.amount} </Title>
+    <Title subtitle> Questions left : {value.questions.length}</Title>
+    </>
   );
 };
 
